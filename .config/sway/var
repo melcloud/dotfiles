@@ -1,0 +1,14 @@
+### sway variables
+
+# Keys
+set $mod    Mod4
+set $left   h
+set $down   j
+set $up     k
+set $right  l
+
+# Applications
+set $term       kitty
+set $menu       rofi -show drun -theme $colors/colors-rofi-dark.rasi
+set $files      $term nnn # New terminal emulator instance
+set $processes  $term gotop

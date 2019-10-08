@@ -1,0 +1,5 @@
+# Start mako notification server if not already running
+exec_always 'if ! pgrep mako; then mako > ~/.cache/mako.log; fi'
+
+# Start waybar
+exec_always ~/.scripts/waybar.sh

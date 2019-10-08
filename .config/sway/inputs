@@ -1,0 +1,4 @@
+input 1130:17:HID_046a:0011 {
+  # Set capslock as escape but keep escape default functionality
+  xkb_options caps:escape
+}
