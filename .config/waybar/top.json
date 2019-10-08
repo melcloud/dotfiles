@@ -1,0 +1,113 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": "30",
+  "modules-left": [
+    "sway/workspace",
+    "sway/mode"
+  ],
+  "modules-center": [
+    "sway/window"
+  ],
+  "modules-right": [
+    "tray",
+    "idle_inhibitor",
+    "custom/weather",
+    "cpu",
+    "memory",
+    "disk",
+    "network",
+    "pulseaudio",
+    "clock"
+  ],
+  "sway/mode": {
+    "format": " {}",
+    "max-length": 50
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}: {icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "urgent": "",
+      "focused": "",
+      "default": ""
+    }
+  },
+  "sway/window": {
+    "max-length": 80,
+    "tooltip": false
+  },
+  "tray": {
+    "icon-size": 18
+  },
+  "idle_inhibitor": {
+    "max-length": 10,
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "tooltip": false
+  },
+  "custom/weather": {
+    "format": "{}",
+    "interval": 1800,
+    "return-type": "json",
+    "exec": "~/.config/waybar/modules/weather.sh",
+    "exec-if": "ping wttr.in -c1"
+  },
+  "cpu": {
+    "max-length": 10,
+    "format": "{usage}% ﬙"
+  },
+  "memory": {
+    "max-length": 15,
+    "format": "{used:0.1f}G/{total:0.1f}G "
+  },
+  "disk": {
+    "max-length": 10,
+    "interval": 3600,
+    "format": "{percentage_used}% ",
+    "tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+    "path": "/"
+  },
+  "network": {
+    "max-length": 50,
+    "format": "{ifname}",
+    "format-wifi": "{essid} {signalStrength}% ",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{ipaddr}/{cidr} ({signaldBm} dBm, {frequency} MHz)",
+    "tooltip-format-ethernet": "{ipaddr}/{cidr} ({bandwidthUpBits} {bandwidthDownBits})",
+    "tooltip-format-disconnected": "Disconnected"
+  },
+  "pulseaudio": {
+    "max-length": 20,
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} ",
+    "format-muted": "",
+    "format-icons": {
+      "headphones": "",
+      "headset": "",
+      "phone": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 10,
+    "on-click": "pavucontrol"
+  },
+  "clock": {
+    "format": "{:%a %d %b %H:%M:%S} ",
+    "interval": 1
+  }
+}
