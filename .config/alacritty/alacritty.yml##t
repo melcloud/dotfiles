@@ -1,0 +1,126 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+#env:
+  # TERM variable
+  #
+  # This value is used to set the `$TERM` environment variable for
+  # each instance of Alacritty. If it is not present, alacritty will
+  # check the local terminfo database and use `alacritty` if it is
+  # available, otherwise `xterm-256color` is used.
+  # TERM: alacritty
+
+window:
+  padding:
+    x: 2
+    y: 2
+  dynamic_padding: true
+  # Allow terminal applications to change Alacritty's window title.
+  dynamic_title: true
+{% if yadm.os == "Darwin" %}
+  decorations: buttonless
+{% else %}
+  decorations: full
+  # GTK theme variant (Linux/BSD only)
+  #
+  # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
+  # Set this to `None` to use the default theme variant.
+  #gtk_theme_variant: None
+{% endif %}
+
+# Font configuration
+font:
+  normal:
+    family: JetBrains Mono
+    style: Medium
+  bold:
+    family: JetBrains Mono
+    style: Bold
+  italic:
+    family: JetBrains Mono
+    style: Medium Italic
+  bold_italic:
+    family: JetBrains Mono
+    style: Bold Italic
+  size: 14.0
+{% if yadm.os == "Darwin" %}
+  use_thin_strokes: true
+{% endif %}
+
+# Colors (Nord)
+colors:
+  primary:
+    background: '#2e3440'
+    foreground: '#d8dee9'
+    dim_foreground: '#a5abb6'
+  cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  vi_mode_cursor:
+    text: '#2e3440'
+    cursor: '#d8dee9'
+  selection:
+    text: CellForeground
+    background: '#4c566a'
+  search:
+    matches:
+      foreground: CellBackground
+      background: '#88c0d0'
+    bar:
+      background: '#434c5e'
+      foreground: '#d8dee9'
+  normal:
+    black: '#3b4252'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#88c0d0'
+    white: '#e5e9f0'
+  bright:
+    black: '#4c566a'
+    red: '#bf616a'
+    green: '#a3be8c'
+    yellow: '#ebcb8b'
+    blue: '#81a1c1'
+    magenta: '#b48ead'
+    cyan: '#8fbcbb'
+    white: '#eceff4'
+  dim:
+    black: '#373e4d'
+    red: '#94545d'
+    green: '#809575'
+    yellow: '#b29e75'
+    blue: '#68809a'
+    magenta: '#8c738c'
+    cyan: '#6d96a5'
+    white: '#aeb3bb'
+
+{% if yadm.os != "Darwin" %}
+bell:
+  command:
+    program: notify-send
+{% endif %}
+
+background_opacity: 0.9
+live_config_reload: true
+
+key_bindings:
+{% if yadm.os == "Darwin" %}
+# (macOS only)
+- { key: T,      mods: Command,            action: SpawnNewInstance }
+{% else %}
+#- { key: V,        mods: Control|Shift,           action: Paste            }
+#- { key: C,        mods: Control|Shift,           action: Copy             }
+#- { key: F,        mods: Control|Shift,           action: SearchForward    }
+#- { key: B,        mods: Control|Shift,           action: SearchBackward   }
+#- { key: C,        mods: Control|Shift, mode: Vi, action: ClearSelection   }
+#- { key: Insert,   mods: Shift,                   action: PasteSelection   }
+#- { key: Key0,     mods: Control,                 action: ResetFontSize    }
+#- { key: Equals,   mods: Control,                 action: IncreaseFontSize }
+#- { key: Add,      mods: Control,                 action: IncreaseFontSize }
+#- { key: Subtract, mods: Control,                 action: DecreaseFontSize }
+#- { key: Minus,    mods: Control,                 action: DecreaseFontSize }
+{% endif %}
